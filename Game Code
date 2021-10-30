@@ -1,0 +1,48 @@
+import random
+
+lower_case = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+              'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+upper_case = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+              'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+symbols = ['!', '#', '$', '%', '&']
+numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+length = int(input("Enter the length of the password: "))
+
+start = input("""Enter "Yes" if you want to start with a letter: """).lower()
+
+password = ""
+choices = ['lower', 'upper', 'symbols', 'numbers']
+
+start_random = random.randint(0, 1)
+
+if start == "yes" and start_random == 0:
+    password = password + lower_case[random.randint(0, 25)]
+
+if start == "yes" and start_random == 1:
+    password = password + upper_case[random.randint(0, 25)]
+
+while True:
+
+    next_random = random.randint(0, 3)
+    lower_random = random.randint(0, 25)
+    upper_random = random.randint(0, 25)
+    symbols_random = random.randint(0, 4)
+    numbers_random = random.randint(0, 8)
+
+    if choices[next_random] == 'lower':
+        password = password + lower_case[lower_random]
+
+    if choices[next_random] == 'upper':
+        password = password + upper_case[upper_random]
+
+    if choices[next_random] == 'symbols':
+        password = password + symbols[symbols_random]
+
+    if choices[next_random] == 'numbers':
+        password = password + numbers[numbers_random]
+
+    if length == len(password):
+        break
+
+print(password)
